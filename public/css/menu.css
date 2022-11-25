@@ -1,0 +1,19 @@
+/*.navbar{
+    text-align: center;
+    height:90px;
+}*/
+
+body{
+    background-color: #DBEFFF;
+}
+
+.card-img-top{
+    width:268.2px;
+    height: 214.51px;
+    align-self: center;
+}
+
+.btn-outline-secondary{
+    background-color: #198754;
+    color: white;
+}

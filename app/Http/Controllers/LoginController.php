@@ -37,7 +37,7 @@ class LoginController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('welcome'))->with('success', 'Usuario creado correctamente');
+        return redirect(route('menu'))->with('success', 'exito');
     }
 
     public function login(Request $request){
@@ -56,9 +56,9 @@ class LoginController extends Controller
 
         if(Auth::attempt($credentials, $remember)){
             $request -> session()->regenerate();
-            return redirect()->intended(route('welcome'));
+            return redirect()->intended(route('menu'))->with('success', 'ok');
         }else{
-            return redirect(route('login'))->with('success','Correo o contraseña incorrectos');
+            return redirect(route('login'))->with('success','error');
         }
     }
 
@@ -68,6 +68,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect(route('Login.index'));
+        return redirect(route('login'))->with('success', 'bye');
     }
 }
