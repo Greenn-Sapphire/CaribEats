@@ -34,12 +34,6 @@
                 <form class="container" method="POST" action = "{{route('inicia-sesion')}}">
                     @csrf
 
-                    @if(session('success'))
-                        <div class="alert alert-danger" role="success">
-                            {{session('success')}}
-                        </div>
-                    @endif
-
                     <label for="emailInput" class="form-label">Correo Electronico</label>
                     <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp", name ="email">
 
@@ -74,5 +68,33 @@
 
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @switch(true)
+        @case(session('success') == 'error')
+            <script type="text/javascript">
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Correo o contraseña incorrectos',
+                    footer: '<a href="/registro">¿Estas registrado?</a>'
+                })
+            </script>
+            @break
+
+        @default
+        @case(session('success') == 'bye')
+            <script type="text/javascript">
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Se ha cerrrado sesion con exito',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            </script>
+            @break
+    @endswitch
 </body>
 </html>

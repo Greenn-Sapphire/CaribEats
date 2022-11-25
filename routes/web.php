@@ -21,4 +21,4 @@ Route::post('/validar-registro', 'App\Http\Controllers\LoginController@register'
 Route::post('/inicia-sesion', 'App\Http\Controllers\LoginController@login')->name('inicia-sesion');
 Route::get('/logout', 'App\Http\Controllers\LoginController@logout')->name('logout');
 
-Route::resource('/permissions', App\Http\Controllers\PermissionController::class);
+Route::get('/menu', 'App\Http\Controllers\MenuController@index') -> name('menu');
