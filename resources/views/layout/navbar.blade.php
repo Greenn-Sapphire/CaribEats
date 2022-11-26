@@ -9,7 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="css/navbar.css">
 
     @yield('css')
     <title>Caribeats</title>
@@ -25,24 +25,22 @@
             <div class="navbar-collapse collapse justify-content-end" id="topNavbar">
                 <ul class="navbar-nav">
                     @auth
+                    <li>
+                        <img src="https://cdn-icons-png.flaticon.com/512/1218/1218339.png?w=740&t=st=1669418352~exp=1669418952~hmac=33581ded4f1de61bcb2e9e851612aac729a77df7c7c7d3122e738883431f27e3.png" class="cart-icon"></img>
+                    </li>
                     <li class="nav-item">
                         <span class="nav-link">
                             Bienvenido: {{auth()->user()->name}}
                         </span>
-                    </li>
-                    <li class="nav-item">
-                        <div class="col-md-3">
-                            <a href="{{route('logout')}}" >
-                                <button type="submit" class="btn btn-danger nav-link active">
-                                    Logout
-                                </button>
-                            </a>
-                        </div>
+                        <ul>
+                            <li><a href="">Método de pago</a></li>
+                            <li><a href="{{route('logout')}}">Cerrar sesión</a></li>
+                        </ul>
                     </li>
                     @else
-                        <li class="nav-item">
-                            <a href="/" class="nav-link">Login</a>
-                        </li>
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Login</a>
+                    </li>
                     @endauth
                 </ul>
             </div>
