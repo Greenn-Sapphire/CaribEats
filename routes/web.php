@@ -22,3 +22,4 @@ Route::post('/inicia-sesion', 'App\Http\Controllers\LoginController@login')->nam
 Route::get('/logout', 'App\Http\Controllers\LoginController@logout')->name('logout');
 
 Route::get('/menu', 'App\Http\Controllers\MenuController@index') -> name('menu');
+Route::view('/canasta', "canasta") -> name('canasta');

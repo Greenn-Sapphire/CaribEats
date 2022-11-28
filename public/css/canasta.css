@@ -1,0 +1,91 @@
+body{
+    background-color: #ededed;
+}
+
+h1{
+    text-align: center;
+}
+
+h2, h3{
+    text-align: start;
+}
+
+img{
+    width: 9.375rem;
+    height: 9.375rem;
+}
+
+hr{
+    background: rgba(0,0,0,.1);
+    height: 1px;
+    margin: 48px 0 48px;
+}
+
+.cart-container{
+    background-color: white;
+    align-items: center;
+    margin: 2rem 3rem;
+    padding: 40px 60px;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 #737373;
+}
+
+.product-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.description-container{
+    justify-items: flex-start;
+}
+
+.product-counter{
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 4px;
+    display: flex;
+    padding: 10px;
+}
+
+.product-counter input{
+    width: 2rem;
+    border: 0;
+    font-size: 20px;
+    text-align: center;
+    appearance: none;
+    outline: 0;
+}
+.product-counter span{
+    font-size: 25px;
+    font-style: oblique;
+    padding: 0 0.625rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.total-container{
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 3rem;
+    padding: 40px 60px;
+}
+
+.total-container button{
+    background-color: limegreen;
+    border-color: transparent;
+    color: white;
+    border-radius: 5px;
+    font-size: large;
+    padding: 5px;
+}
+
+.clear-button{
+    width: 2rem;
+    height: 2rem;
+    background-color: red;
+    border-color: transparent;
+    color: white;
+    border-radius: 5px;
+    font-size: large;
+    padding: 5px; 
+}
