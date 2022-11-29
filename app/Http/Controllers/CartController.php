@@ -4,37 +4,42 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
-use Cart;
 
-class MenuController extends Controller
+class CartController extends Controller
 {
     public function index(){
         $productos = Producto::all();
         return view('Menu.index')->with(['productos'=> $productos]);
     }
 
-    public function cart(){
+    public function cart()  {
+
         $cartCollection = \Cart::getContent();
         //dd($cartCollection);
         return view('cart')->with(['cartCollection' => $cartCollection]);;
     }
-
     public function remove(Request $request){
         \Cart::remove($request->id);
         return redirect()->route('cart.index')->with('success_msg', 'Item is removed!');
     }
 
     public function add(Request $request){
-        $productos = Producto::find($request -> id);
-        
-        Cart::add(
-            $productos -> id,
-            $productos -> name,
-            $productos -> price,
-            1,
-            array("image" => $productos->image)
-        );
-        return redirect('/cart')->with('success_msg', 'Item Agregado a sú Carrito!');;
+        $request -> validate([
+            'name' => 'required|max:191',
+            'price' => 'required',
+            'quantity' => 'required|integer',
+            'image' => 'required',
+        ]);
+        \Cart::add(array(
+            'id' => $request->id,
+            'name' => $request->name,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+            'attributes' => array(
+                'image' => $request->img
+            )
+        ));
+        return redirect()->route('cart.index')->with('success_msg', 'Item Agregado a sú Carrito!');
     }
 
     public function update(Request $request){
@@ -52,5 +57,4 @@ class MenuController extends Controller
         \Cart::clear();
         return redirect()->route('cart.index')->with('success_msg', 'Car is cleared!');
     }
-
 }
